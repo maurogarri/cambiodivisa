@@ -1,4 +1,4 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
 
-https://docs.google.com/document/d/1BTOpsEgb9TbKNtaxgMhkSALFZrCIDGdB_pMeZ4kVlEI/edit?usp=sharing 
+APLICACIÓN 
+kapdivisa
+La aplicación va consistir en utilizar una API, en la que se puede encontrar todos los tipos de cambios actuales e históricos, utilizando los valores actuales y asi podemos realizar operaciones con esos valores y cambiar cualquier divisa a la moneda o criptomoneda que deseemos.
