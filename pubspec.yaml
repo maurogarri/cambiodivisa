@@ -7,9 +7,10 @@ environment:
   sdk: ^3.1.2
   
 
-# Add regular dependencies here.
+# Add regular de pendencies here.
 dependencies:
- mysql1: ^0.20.0
+  http: ^0.13.0
+  mysql1: ^0.20.0
   # path: ^1.8.0
 
 dev_dependencies:

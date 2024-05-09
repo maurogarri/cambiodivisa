@@ -17,6 +17,8 @@ import 'package:mysql1/mysql1.dart';
     try{
       await _crearDB(conn);
       await _crearTablaUsuarios(conn);
+      await _crearTablaDivisas(conn);
+      await _crearTablaCuentas(conn);
       await conn.close();
     } catch(e){
       print(e);
@@ -51,5 +53,21 @@ import 'package:mysql1/mysql1.dart';
     print('Tabla usuarios creada');
   }
 
-  
+  _crearTablaDivisas(conn) async{
+    await conn.query('''CREATE TABLE IF NOT EXISTS divisas(
+      iddivisa INT NOT NULL,
+      nombre VARCHAR (5) NOT NULL UNIQUE,
+      valor int NOT NULL
+    )''');
+    print('tabla de divisas creada');
   }
+
+
+ _crearTablaCuentas(conn) async{
+  await conn.query ('''CREATE TABLE IF NOT EXISTS cuentas(
+    valor int NOT NULL)''');
+    print('tabla de cuenta creadas');
+ }
+
+  }
+  

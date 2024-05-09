@@ -1,7 +1,7 @@
 
 import 'package:mysql1/mysql1.dart';
 
-import 'kapdatabase.dart';
+import 'database.dart';
 
 
 
@@ -73,5 +73,5 @@ class Usuario{
     }
   }
 
-  
+   
 }

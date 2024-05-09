@@ -1,29 +1,62 @@
 import 'package:mysql1/mysql1.dart';
+import 'database.dart';
+
 
 
 
 
 class Divisa{
   // PROPIEDADES GETTERS Y SETTERS
-  double ? _cantidad;
-  String ? _nombre;
+  int ? iddivisa;
+  int  valor =0;
+  String ? nombre;
   
-  String? get nombre => this._nombre;
-  set nombre (String? nombre) => _nombre = nombre;
-  
-  double? get cantidad => this._cantidad;
-  set cantidad (double ? cantidad) => _cantidad = cantidad;
 
   //CONSTRUCTORES
 
   Divisa();
   
   Divisa.fromMap(ResultRow map){
-    this._cantidad = map ['cantidad'];
-     this._nombre = map['nombre'];
+    this.valor = map ['valor'];
+     this.nombre = map['nombre'];
     
   }
 
+
   //METODOS
-  
+   all() async {
+    var conn = await Database().conexion();
+
+    try {
+      var resultado = await conn.query('SELECT * FROM divisas');
+      List<Divisa> divisas =
+          resultado.map((row) => Divisa.fromMap(row)).toList();
+      return divisas;
+    } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
+    }
+   }
+
+
+   get(String nombre) async {                                   // DEVOLVER EL REGISTRO DEL ID QUE SEA
+    var conn = await Database().conexion();
+    
+    try{
+      var resultado = await conn.query('SELECT * FROM divisas WHERE nombre  = ?',[nombre]);
+      return Divisa.fromMap(resultado.first);
+      
+    } catch(e) {
+      print(e);
+    } finally{
+      await conn.close();
+    }
+  }
+ 
 }
+
+
+ 
+ 
+  

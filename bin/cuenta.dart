@@ -1,4 +1,4 @@
-import 'app.dart';
+import 'database.dart';
 import 'dart:io';
 
 class Cuenta{
@@ -16,5 +16,16 @@ class Cuenta{
      print('tu saldo ha sido actualizado a $saldototal');
   }
 
-
+  insertarCuentas() async {
+    var conn = await Database().conexion();
+    try {
+      await conn.query('INSERT INTO cuentas (saldo) VALUES (?)',
+          [saldo]);
+      print('$saldo actual en cuenta');
+    } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
+    }
+  }
 }
